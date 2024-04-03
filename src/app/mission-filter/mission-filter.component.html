@@ -1,7 +1,6 @@
-<!-- mission-filter.component.html -->
-<div>
-  <mat-form-field>
-    <input matInput type="text" [(ngModel)]="year" placeholder="Enter Launch Year">
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
-</div>
+<mat-form-field>
+  <mat-label>Select Year</mat-label>
+  <mat-select (change)="selectYear($event.target.value)">
+    <mat-option *ngFor="let year of launchYears" [value]="year">{{ year }}</mat-option>
+  </mat-select>
+</mat-form-field>

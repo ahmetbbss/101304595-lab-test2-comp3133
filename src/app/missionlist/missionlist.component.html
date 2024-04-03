@@ -1,9 +1,8 @@
-<!-- mission-list.component.html -->
-<div *ngFor="let launch of launches" class="launch-card">
-  <div>
+<div *ngFor="let launch of launches">
+  <mat-card>
+    <img [src]="launch.mission_patch_small" alt="Mission Patch">
     <h2>{{ launch.mission_name }}</h2>
-    <p>Launch Year: {{ launch.launch_year }}</p>
-    <p>Details: {{ launch.details }}</p>
-    <img *ngIf="launch.links.mission_patch_small" [src]="launch.links.mission_patch_small" alt="Mission Patch">
-  </div>
+    <p><strong>Launch Year:</strong> {{ launch.launch_year }}</p>
+    <p>{{ launch.details }}</p>
+  </mat-card>
 </div>

@@ -1,19 +1,14 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Add this import
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-mission-filter',
-  templateUrl: './mission-filter.component.html',
-  styleUrls: ['./mission-filter.component.css']
+  selector: 'app-missionfilter',
+  templateUrl: '../mission-filter/mission-filter.component.html',
+  // styleUrls: ['./missionfilter.component.css'] // Remove or comment out this line
 })
-export class MissionFilterComponent {
-  @Output() filterByYear = new EventEmitter<string>();
+export class MissionfilterComponent {
+  @Output() yearSelected = new EventEmitter<number>();
 
-  year: string = '';
-
-  constructor() { }
-
-  onSearch(): void {
-    this.filterByYear.emit(this.year);
+  selectYear(year: number): void {
+    this.yearSelected.emit(year);
   }
 }

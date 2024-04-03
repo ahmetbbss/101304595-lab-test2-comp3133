@@ -1,25 +1,23 @@
-// mission-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { SpaceXService } from '../spacex.service';
+import { SpaceXLaunch } from '../spacex-launch.interface';
 
 @Component({
-  selector: 'app-mission-list',
-  templateUrl: '../missionlist/missionlist.component.html',
-  styleUrls: ['../missionlist/missionlist.component.css']
+  selector: 'app-missionlist',
+  templateUrl: './missionlist.component.html',
+  styleUrls: ['./missionlist.component.css']
 })
-export class MissionListComponent implements OnInit {
-  launches: any[] = [];
+export class MissionlistComponent implements OnInit {
+  launches: SpaceXLaunch[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private spacexService: SpaceXService) { }
 
   ngOnInit(): void {
-    this.fetchSpaceXLaunches();
+    this.getAllLaunches();
   }
 
-  fetchSpaceXLaunches(): void {
-    this.http.get<any[]>('https://api.spacexdata.com/v3/launches')
-      .subscribe(data => {
-        this.launches = data;
-      });
+  getAllLaunches(): void {
+    this.spacexService.getAllLaunches()
+      .subscribe(launches => this.launches = launches);
   }
 }
