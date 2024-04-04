@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SpaceXLaunch } from '../spacex-launch.interface';
+import { SpaceXLaunch } from '../network/spacex-launch.interface';
 
 @Component({
   selector: 'app-missiondetails',

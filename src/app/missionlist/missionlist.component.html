@@ -1,8 +1,14 @@
-<div *ngFor="let launch of launches">
-  <mat-card>
-    <img [src]="launch.mission_patch_small" alt="Mission Patch">
-    <h2>{{ launch.mission_name }}</h2>
-    <p><strong>Launch Year:</strong> {{ launch.launch_year }}</p>
-    <p>{{ launch.details }}</p>
-  </mat-card>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let launch of launches">
+      <div class="card mb-3">
+        <img class="card-img-top" [src]="launch.mission_patch_small" alt="Mission Patch">
+        <div class="card-body">
+          <h2 class="card-title">{{ launch.mission_name }}</h2>
+          <p class="card-text"><strong>Launch Year:</strong> {{ launch.launch_year }}</p>
+          <p class="card-text">{{ launch.details }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

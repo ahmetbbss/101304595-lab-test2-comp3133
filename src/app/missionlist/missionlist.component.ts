@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SpaceXService } from '../spacex.service';
-import { SpaceXLaunch } from '../spacex-launch.interface';
+import { SpaceXService } from '../network/spacex.service';
+import { SpaceXLaunch } from '../network/spacex-launch.interface';
 
 @Component({
   selector: 'app-missionlist',
@@ -21,3 +21,5 @@ export class MissionlistComponent implements OnInit {
       .subscribe(launches => this.launches = launches);
   }
 }
+
+// Do not export MissionlistComponent again here, it's already exported above

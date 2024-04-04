@@ -1,35 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-// Import RouterModule
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card'; // Import MatCardModule
-import { MatSelectModule } from '@angular/material/select'; // Import any other necessary Angular Material modules
+import { RouterModule, Routes } from '@angular/router'; // Import RouterModule, not NgModule
+import { AppRoutingModule } from './app-routing.module'; // Import your AppRoutingModule
 
 import { AppComponent } from './app.component';
-import { MissionlistComponent } from './missionlist/missionlist.component'; // Import your components
-// Import other necessary components, services, etc.
+import { MissionlistComponent } from './missionlist/missionlist.component';
+import { MissiondetailsComponent } from './mission-details/mission-details.component';
+import { MissionfilterComponent } from './mission-filter/mission-filter.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/missions', pathMatch: 'full' },
+  { path: 'missions', component: MissionlistComponent },
+  { path: 'rocket', component: MissiondetailsComponent },
+  { path: 'filter', component: MissionfilterComponent },
+];
+
+
 
 @NgModule({
   declarations: [
-    // Other components declared here
+    AppComponent,
+    MissionlistComponent,
+    MissiondetailsComponent,
+    MissionfilterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    AppRoutingModule, // Import AppRoutingModule here
     BrowserAnimationsModule,
-    MatCardModule, // Add MatCardModule here
-    MatSelectModule, // Add any other Angular Material modules you need here
-    RouterModule.forRoot([
-      { path: '', redirectTo: '/missions', pathMatch: 'full' }, // Redirect to /missions
-      { path: 'missions', component: MissionlistComponent },
-      // Add the route for MissiondetailsComponent if needed
-    ]),
-    // Add RouterModule with .forRoot() to configure routes here
-    // Other modules imported here
+    RouterModule.forRoot(routes) // Import RouterModule here
   ],
   providers: [],
   bootstrap: [AppComponent]
